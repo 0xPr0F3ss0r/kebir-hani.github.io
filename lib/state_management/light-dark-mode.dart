@@ -1,4 +1,4 @@
-import 'package:signals/signals_core.dart';
+import 'package:jaspr_riverpod/legacy.dart';
 
 //@client
-final mode = signal('dark');
+final mode = StateProvider <String>((ref) => 'dark');

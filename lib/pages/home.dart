@@ -1,8 +1,11 @@
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
+import 'package:jaspr_riverpod/jaspr_riverpod.dart';
+import 'package:my_portfolio/components/start_section.dart';
 import 'package:my_portfolio/constants/theme.dart';
 
-import '../components/counter.dart';
+import 'package:my_portfolio/state_management/light-dark-mode.dart' as state_management;
+
 
 // By using the @client annotation this component will be automatically compiled to javascript and mounted
 // on the client. Therefore:
@@ -10,36 +13,53 @@ import '../components/counter.dart';
 // - this component and any child components will be built once on the server during pre-rendering and then
 //   again on the client during normal rendering.
 @client
-class Home extends StatefulComponent {
+class Home extends StatelessComponent {
   const Home({super.key});
 
   @override
-  State<Home> createState() => HomeState();
-}
-
-class HomeState extends State<Home> {
-
-  @override
-  void initState() {
-    super.initState();
-    // Run code depending on the rendering environment.
-    if (kIsWeb) {
-      print("Hello client");
-      // When using @client components there is no default `main()` function on the client where you would normally
-      // run any client-side initialization logic. Instead you can put it here, considering this component is only
-      // mounted once at the root of your client-side component tree.
-    } else {
-      print("Hello server");
-    }
-  }
-
-  @override
   Component build(BuildContext context) {
-    return section([
-     
-      p(styles: Styles(color: whiteColor),[.text('You successfully create a new Jaspr site.')]),
-      div(styles: Styles(height: 100.px), []),
-      const Counter(),
+    String currentMode = context.watch(state_management.mode);
+    return div(id: 'wrapper',styles: Styles(
+      backgroundColor: currentMode == 'dark' ? Colors.black : Colors.white,
+    ), [
+     StartSection(),
+      section(id: 'about', [
+        div(classes: 'container', [
+          div(classes: 'cta', [
+            h1(styles: Styles(color: whiteColor), [.text('the second page !')]),
+            p(styles: Styles(color: whiteColor), [.text('flutter developer for the second page.')]),
+          ]),
+        ]),
+      ]),
+      section(id: 'portfolio', [
+        div(classes: 'container', [
+          div(classes: 'cta', [
+            h1(styles: Styles(color: whiteColor), [.text('portfolio !')]),
+            p(styles: Styles(color: whiteColor), [.text('flutter developer fot the third page.')]),
+          ]),
+        ]),
+      ]),
     ]);
   }
+
+  static get styles => [
+    css('section').styles(
+      display: Display.flex,
+      minHeight: 100.vh,
+      flexWrap: FlexWrap.wrap,
+      backgroundPosition: BackgroundPosition(offsetX: 50.percent),
+      backgroundRepeat: BackgroundRepeat.noRepeat,
+      backgroundSize: BackgroundSize.cover,
+      raw: {'-o-background-size': 'cover', 'webkit-background-size': 'cover', '-moz-background-size': 'cover'},
+    ),
+    css('.container').styles(
+      width: 83.3.percent,
+      padding: Spacing.only(top: 6.rem,bottom: 6.rem),
+      margin: Spacing.only(left: Unit.auto, right: Unit.auto),
+    ),
+     ...StartSection.styles,
+     StyleRule.media(query: MediaQuery.screen(minWidth: 1000.px), styles: [
+
+     ])
+  ];
 }

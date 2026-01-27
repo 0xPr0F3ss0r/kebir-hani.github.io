@@ -1,22 +1,11 @@
 import 'package:jaspr/dom.dart';
+import 'package:jaspr/jaspr.dart';
 
-// import 'package:jaspr/jaspr.dart';
+// ignore_for_file: non_constant_identifier_names
 
-class ThemeData {
-  const ThemeData({
-    required this.backgroundColor,
-    required this.textColor,
-    required this.primaryColor,
-  });
-
-  final Color backgroundColor;
-  final Color textColor;
-  final Color primaryColor;
-}
-
-
-
-const primaryColor = Color('#01589B');
-const secondColor = Color('#FF0000');
-const greenColor = Color('#00FF00');
-const whiteColor = Color('#FFFFFF');
+final Color greenColor = Color('#2E6A6C');
+final Color whiteColor = Color('#F5EADA');
+final Color yellowColor = Color('#E2BB77');
+final Color blueColor = Color('#2A3C58');
+final Color textColor = Color('#F5EADA');
+final Color primaryColor = Color('#2E6A6C');

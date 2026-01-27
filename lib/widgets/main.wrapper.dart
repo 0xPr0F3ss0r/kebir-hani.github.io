@@ -1,35 +1,39 @@
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
+import 'package:jaspr_riverpod/jaspr_riverpod.dart';
 import 'package:my_portfolio/state_management/light-dark-mode.dart';
-import 'package:signals/signals_core.dart';
+
+
+final container = ProviderContainer();
+
 
 @client
-class MainWrapper extends StatefulComponent {
+class MainWrapper extends StatelessComponent {
   final Component child;
-    MainWrapper({super.key, required this.child});
-  @override
-  State<StatefulComponent> createState() => _MainWrapperState();
-}
-class _MainWrapperState extends State<MainWrapper> {
-
-  
-  late Signal<String> _mode;
-
-  @override
-  void initState() {
-    super.initState();
-    // Use the signal
-    _mode = mode; 
-  }
+    const MainWrapper({super.key, required this.child});
 
   @override
   Component build(BuildContext context) {
-    return div(
-      styles: Styles(backgroundColor: mode.value == 'dark' ? Colors.black : Colors.white,
+    return UncontrolledProviderScope(
+            container: container,
+            child: Builder(
+              builder: (context) {
+                 final newMode = context.watch(mode);
+          print('mode in main wrapper (client): $newMode');
+              
+              return div(
+              styles: Styles(
+                 backgroundColor: newMode == 'dark' ? Colors.black : Colors.white,
               minHeight: 100.vh,
-),
-      [  SignalBuilder(builder: (context) => component.child)],
-    );
+              ),
+              [child],
+              
+              );
+              }, 
+            )
+           );
+      
+       
   }
   
 }

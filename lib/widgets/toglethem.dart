@@ -1,7 +1,8 @@
-import 'package:jaspr/jaspr.dart';
 import 'package:jaspr/dom.dart';
+import 'package:jaspr/jaspr.dart';
+import 'package:jaspr_riverpod/jaspr_riverpod.dart';
+import 'package:my_portfolio/state_management/light-dark-mode.dart';
 
-@client
 class ToggleTheme extends StatefulComponent {
   const ToggleTheme({super.key});
 
@@ -10,38 +11,35 @@ class ToggleTheme extends StatefulComponent {
 }
 
 class _ToggleThemeState extends State<ToggleTheme> {
-  bool darkMode = true; // state is internal
-
   @override
   Component build(BuildContext context) {
+    // watch mode so this component rebuilds when it changes
+    final currentMode = context.watch(mode);
+
     return button(
       classes: 'mode-button',
       attributes: {'aria-label': 'Toggle theme'},
       onClick: () {
-        print("clicked");
-        // setState(() {
-        //   darkMode = !darkMode;
-        // });
+        final newMode = currentMode == 'dark' ? 'light' : 'dark';
+        context.read(mode.notifier).state = newMode;
+        print('Toggled mode to $newMode');
       },
       [
         div(
           styles: Styles(
-            width: 40.px,
-            height: 40.px,
-            backgroundColor: darkMode ? Colors.black : Colors.white,
             display: Display.flex,
+            width: 150.px,
+            height: 150.px,
+           justifyContent: .center,
             alignItems: .center,
-            justifyContent: .center,
-            radius: .circular(20.px),
-            cursor: Cursor.pointer,
           ),
           [
             img(
               src: 'images/moon1.png',
               alt: 'light/dark mode',
               styles: Styles(
-                width: 24.px,
-                height: 24.px,
+                width:65.px,
+                height: 65.px,
               ),
             ),
           ],

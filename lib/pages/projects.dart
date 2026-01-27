@@ -1,9 +1,10 @@
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
+ @client
+
 class projects extends StatefulComponent{
   const projects({super.key});
-
   @override
   State<projects> createState()=> projectsState();
 }
