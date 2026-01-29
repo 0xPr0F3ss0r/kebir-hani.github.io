@@ -49,15 +49,14 @@ class ThemeToggle extends StatelessComponent {
   @css
 static List<StyleRule> get styles => [
   // button base
-  css('.theme-toggle', [
-    css('&').styles(
+  css('.theme-toggle',) .styles(
       padding: Spacing.all(0.px),
-      margin: Spacing.only(left: .auto),
+     margin: Spacing.only(left: .auto, right:.percent(8)),
       border: Border.none,
       cursor: Cursor.pointer,
       backgroundColor: Colors.transparent,
     ),
-  ]),
+  
 
   // moon inner circle
   css('.theme-toggle__inner-moon #inner-moon-circle').styles(

@@ -19,7 +19,10 @@ class Header extends StatelessComponent {
         backgroundColor: currentMode == 'dark' ? Colors.black : Colors.white,
       ),
       [
-        Link(
+        div(
+          styles: Styles(display: Display.flex, alignItems: .center, gap: Gap.all(0.px)),
+          [
+            Link(
           to: '/',
           child: img(
             classes: 'header-logo ${currentMode == 'dark' ? 'dark-mode' : 'light-mode'}',
@@ -40,6 +43,9 @@ class Header extends StatelessComponent {
               Link(to: route.path, child: .text(route.label)),
             ]),
         ]),
+          ]
+        ),
+        
         ThemeToggle(),
       ],
     );
@@ -49,9 +55,13 @@ class Header extends StatelessComponent {
   static List<StyleRule> get styles => [
     css('header').styles(
       display: .flex,
+      position: .fixed(top: 0.px, left: 0.px),
+      zIndex: ZIndex(9999),
+      width: 100.percent,
       padding: .symmetric(horizontal: 50.px, vertical: 10.px),
+      justifyContent: .spaceBetween,
       alignItems: .center,
-      gap: Gap.all(20.px),
+      
     ),
     css('header .mode-button').styles(
       padding: .zero,

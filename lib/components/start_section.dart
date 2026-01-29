@@ -16,7 +16,7 @@ class StartSection extends StatefulComponent {
       height: 100.vh,
       margin: Spacing.only(left: 250.px),
       flexDirection: FlexDirection.column,
-      justifyContent: JustifyContent.start,
+      justifyContent: JustifyContent.center,
       alignItems: AlignItems.start,
       color: whiteColor,
       textAlign: TextAlign.start,
