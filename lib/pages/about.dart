@@ -20,39 +20,40 @@ class About extends StatelessComponent {
             h3(styles: Styles(color: BlueColor, fontSize: 60.px), [.text('кто я?')]),
             h2(styles: Styles(color: color), [.text('who am i ?')]),
             p(styles: Styles(color: color, lineHeight: Unit.em(1.7)), [
-  .text('I’m Hani, a '),
-  span(
-    styles: Styles(
-      color: BlueColor,
-      fontWeight: FontWeight.bold,
-    ),
-    [.text('Flutter developer')],
-  ),
-  .text(' since 2023 and a programmer since 2022. I build advanced mobile applications with a focus on clean code and great user experiences. I’m also interested in '),
-  span(
-    styles: Styles(
-      fontWeight: FontWeight.bold, // subtle emphasis
-    ),
-    [.text('low-level programming')],
-  ),
-  .text(', '),
-  span(
-    styles: Styles(
-      fontWeight: FontWeight.bold,
-    ),
-    [.text('systems')],
-  ),
-  .text(', and '),
-  span(
-    styles: Styles(
-      color: BlueColor,
-      fontWeight: FontWeight.bold,
-    ),
-    [.text('cybersecurity')],
-  ),
-  .text('.'),
-]),
-
+              .text('I’m Hani, a '),
+              span(
+                styles: Styles(
+                  color: BlueColor,
+                  fontWeight: FontWeight.bold,
+                ),
+                [.text('Flutter developer')],
+              ),
+              .text(
+                ' since 2023 and a programmer since 2022. I build advanced mobile applications with a focus on clean code and great user experiences. I’m also interested in ',
+              ),
+              span(
+                styles: Styles(
+                  fontWeight: FontWeight.bold, 
+                ),
+                [.text('low-level programming')],
+              ),
+              .text(', '),
+              span(
+                styles: Styles(
+                  fontWeight: FontWeight.bold,
+                ),
+                [.text('systems')],
+              ),
+              .text(', and '),
+              span(
+                styles: Styles(
+                  color: BlueColor,
+                  fontWeight: FontWeight.bold,
+                ),
+                [.text('cybersecurity')],
+              ),
+              .text('.'),
+            ]),
           ]),
           // Right: Image
           img(
@@ -68,7 +69,6 @@ class About extends StatelessComponent {
 
   @css
   static List<StyleRule> get styles => [
-
     css('.about-wrapper').styles(
       display: Display.flex,
       flexDirection: FlexDirection.row,
@@ -82,8 +82,8 @@ class About extends StatelessComponent {
       fontFamily: FontFamily('DynaPuff'),
     ),
     css('.about-content h3').styles(
-      fontFamily: FontFamily('DynaPuff'),
       margin: Spacing.only(bottom: 15.px),
+      fontFamily: FontFamily('DynaPuff'),
     ),
     css('.about-content p').styles(
       margin: Spacing.only(top: 15.px),
@@ -92,7 +92,6 @@ class About extends StatelessComponent {
     ),
     css('.about-image').styles(
       height: .auto,
-      //width: 300.px,
       radius: BorderRadius.circular(10.px),
       flex: Flex.shrink(0),
     ),
