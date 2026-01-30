@@ -14,3 +14,4 @@ final Color bluelight = Color('#A3CEF1');
 final Color blueShadow = Color('#153243');
 final Color darkShadow = Color('#121212');
 final Color lightShadow = Color('#E0E0E0');
+final Color BlueColor  = Colors.blue;

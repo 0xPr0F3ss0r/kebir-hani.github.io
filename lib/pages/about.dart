@@ -17,19 +17,49 @@ class About extends StatelessComponent {
         div(classes: 'about-wrapper', [
           // Left: Text
           div(classes: 'about-content', [
+            h3(styles: Styles(color: BlueColor, fontSize: 60.px), [.text('кто я?')]),
             h2(styles: Styles(color: color), [.text('who am i ?')]),
-            p(styles: Styles(color: color), [
-              .text(
-                'I am a passionate Flutter developer with experience in building beautiful and functional applications. I love creating seamless user experiences and writing clean, maintainable code and low-level code explorer and cybersecurity enthusiast.',
-              ),
-            ]),
+            p(styles: Styles(color: color, lineHeight: Unit.em(1.7)), [
+  .text('I’m Hani, a '),
+  span(
+    styles: Styles(
+      color: BlueColor,
+      fontWeight: FontWeight.bold,
+    ),
+    [.text('Flutter developer')],
+  ),
+  .text(' since 2023 and a programmer since 2022. I build advanced mobile applications with a focus on clean code and great user experiences. I’m also interested in '),
+  span(
+    styles: Styles(
+      fontWeight: FontWeight.bold, // subtle emphasis
+    ),
+    [.text('low-level programming')],
+  ),
+  .text(', '),
+  span(
+    styles: Styles(
+      fontWeight: FontWeight.bold,
+    ),
+    [.text('systems')],
+  ),
+  .text(', and '),
+  span(
+    styles: Styles(
+      color: BlueColor,
+      fontWeight: FontWeight.bold,
+    ),
+    [.text('cybersecurity')],
+  ),
+  .text('.'),
+]),
+
           ]),
           // Right: Image
           img(
             classes: 'about-image',
             src: 'images/personal.jpg',
             alt: 'About Image',
-            styles: Styles(width: 500.px, height: .auto),
+            styles: Styles(width: 250.px, height: .auto),
           ),
         ]),
       ]),
@@ -38,41 +68,33 @@ class About extends StatelessComponent {
 
   @css
   static List<StyleRule> get styles => [
-    // css('.about-section').styles(
-    //   padding: Spacing.symmetric(vertical: 50.px, horizontal: 70.px),
-    //   justifyContent: JustifyContent.center,
-    //   alignItems: AlignItems.center,
-    // ),
+
     css('.about-wrapper').styles(
       display: Display.flex,
       flexDirection: FlexDirection.row,
-      alignItems: AlignItems.center,
-      justifyContent: JustifyContent.center,
-      gap: Gap.all(40.px),
       flexWrap: FlexWrap.wrap,
+      justifyContent: JustifyContent.center,
+      alignItems: AlignItems.center,
+      gap: Gap.all(40.px),
     ),
-    css('.about-content').
-    styles(
-      maxWidth: 450.px, 
-      flex: Flex.none
-      ),
+    css('.about-content').styles(maxWidth: 450.px, flex: Flex.none),
     css('.about-content h2').styles(
       fontFamily: FontFamily('DynaPuff'),
-      // textAlign: TextAlign.center,
-      // justifyContent: JustifyContent.center,
-      // alignItems: AlignItems.center
-      //    marginBottom: 20.px,
+    ),
+    css('.about-content h3').styles(
+      fontFamily: FontFamily('DynaPuff'),
+      margin: Spacing.only(bottom: 15.px),
     ),
     css('.about-content p').styles(
-      fontSize: 18.px,
-      lineHeight: Unit.em(1.7),
       margin: Spacing.only(top: 15.px),
+      fontSize: 25.px,
+      lineHeight: Unit.em(1.7),
     ),
     css('.about-image').styles(
-      flex: Flex.shrink(0),
-      //width: 300.px,
       height: .auto,
+      //width: 300.px,
       radius: BorderRadius.circular(10.px),
+      flex: Flex.shrink(0),
     ),
   ];
 }
