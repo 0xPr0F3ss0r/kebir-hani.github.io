@@ -9,7 +9,6 @@ import 'package:jaspr/client.dart';
 import 'package:my_portfolio/components/header.dart' deferred as _header;
 import 'package:my_portfolio/pages/contact.dart' deferred as _contact;
 import 'package:my_portfolio/pages/home.dart' deferred as _home;
-import 'package:my_portfolio/pages/projects.dart' deferred as _projects;
 
 /// Default [ClientOptions] for use with your Jaspr project.
 ///
@@ -38,9 +37,5 @@ ClientOptions get defaultClientOptions => ClientOptions(
       loader: _contact.loadLibrary,
     ),
     'home': ClientLoader((p) => _home.Home(), loader: _home.loadLibrary),
-    'projects': ClientLoader(
-      (p) => _projects.projects(),
-      loader: _projects.loadLibrary,
-    ),
   },
 );

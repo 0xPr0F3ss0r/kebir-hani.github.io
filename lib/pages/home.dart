@@ -2,9 +2,8 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_riverpod/jaspr_riverpod.dart';
 import 'package:my_portfolio/components/start_section.dart';
-import 'package:my_portfolio/constants/theme.dart';
 import 'package:my_portfolio/pages/about.dart';
-
+import 'package:my_portfolio/pages/projects.dart';
 import 'package:my_portfolio/state_management/light-dark-mode.dart' as state_management;
 
 // By using the @client annotation this component will be automatically compiled to javascript and mounted
@@ -28,14 +27,7 @@ class Home extends StatelessComponent {
       [
         StartSection(),
         About(),
-        // section(classes: 'full-section', id: 'projects', [
-        //   div(classes: 'container', [
-        //     div(classes: 'cta', [
-        //       h1(styles: Styles(color: whiteColor), [.text('portfolio !')]),
-        //       p(styles: Styles(color: whiteColor), [.text('flutter developer fot the third page.')]),
-        //     ]),
-        //   ]),
-        // ]),
+       ProjectsSection()
         // section(classes: 'full-section', id: 'contact', [
         //   div(classes: 'container', [
         //     div(classes: 'cta', [
@@ -96,6 +88,7 @@ class Home extends StatelessComponent {
     ),
      ...StartSection.styles,
      ...About.styles,
+     ...ProjectsSection.styles,
      StyleRule.media(query: MediaQuery.screen(minWidth: 1000.px), styles: [
 
      ])
