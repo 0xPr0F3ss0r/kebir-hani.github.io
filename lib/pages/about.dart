@@ -24,7 +24,7 @@ class About extends StatefulComponent {
       alignItems: AlignItems.center,
       gap: Gap.all(40.px),
     ),
-    css('.about-content').styles(maxWidth: 450.px, flex: Flex.none),
+    css('.about-content').styles(maxWidth: 450.px, flex: Flex.none,),
     css('.about-content h2').styles(
       fontFamily: FontFamily('DynaPuff'),
     ),
@@ -45,7 +45,7 @@ class About extends StatefulComponent {
 
        css('.about-section h3').styles(
       display: Display.inlineBlock,
-      padding: Spacing.symmetric(horizontal: 0.5.em, vertical: 0.25.em),
+      padding: Spacing.symmetric(horizontal: 0.px, vertical: 0.25.em),
       margin: Spacing.zero,
       color: whiteColor,
       fontSize: 5.rem,
@@ -59,7 +59,7 @@ class About extends StatefulComponent {
     ),
     css('.about-section h3.fill').styles(
       raw: {
-        'background-size': '100% 100%',
+        'background-size': '100%w.wi 100%',
       },
     ),
   ];
