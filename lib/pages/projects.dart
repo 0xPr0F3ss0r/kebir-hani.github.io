@@ -32,7 +32,7 @@ class ProjectsSection extends StatefulComponent {
   State<ProjectsSection> createState() => _ProjectsSectionState();
 
   static List<StyleRule> get styles => [
-        css('.project-section h3').styles(
+        css('.project-section h2').styles(
       display: Display.inlineBlock,
       padding: Spacing.symmetric(horizontal: 0.5.em, vertical: 0.25.em),
       margin: Spacing.zero,
@@ -46,7 +46,7 @@ class ProjectsSection extends StatefulComponent {
         'transition': 'background-size 500ms ease-in-out',
       },
     ),
-    css('.project-section h3.fill').styles(
+    css('.project-section h2.fill').styles(
       raw: {
         'background-size': '100% 100%',
       },
@@ -124,7 +124,6 @@ void _startObserving() {
       ),
       [
         // Header
-        TerminalLine(),
         h2(
           classes: filled ? 'fill': '',
           styles: Styles(
@@ -136,6 +135,7 @@ void _startObserving() {
           ),
           [.text('Part of My Projects')],
         ),
+        TerminalLine(),
 
         // Category tabs
         div(

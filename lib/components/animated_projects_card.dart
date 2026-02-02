@@ -51,7 +51,7 @@ class _AnimatedProjectCardState extends State<AnimatedProjectCard> {
                 offsetX: 0.px,
                 offsetY: 12.px,
                 blur: 30.px,
-                color: currentTheme == 'dark' ? Colors.black.withOpacity(0.25) : Colors.gray.withOpacity(0.25),
+                color: currentTheme == 'dark' ? Colors.black.withOpacity(0.25) : Colors.white.withOpacity(0.25),
               )
             : BoxShadow(
                 offsetX: 0.px,
