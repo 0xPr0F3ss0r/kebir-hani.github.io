@@ -3,7 +3,7 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_riverpod/jaspr_riverpod.dart';
 import 'package:my_portfolio/constants/theme.dart';
-import 'package:my_portfolio/pages/projects.dart';
+import 'package:my_portfolio/model/projects_model.dart';
 // ignore: library_prefixes
 import 'package:my_portfolio/state_management/light-dark-mode.dart' as themeMode;
 
@@ -38,13 +38,11 @@ class _AnimatedProjectCardState extends State<AnimatedProjectCard> {
   @override
   Component build(BuildContext context) {
     String currentTheme = context.watch(themeMode.mode);
-  
     Color textColor = currentTheme == 'dark' ? Colors.white : Colors.black;
-
     return div(
       styles: Styles(
-        width: 280.px,
-        height: 200.px,
+        width: component.project.title.contains('Restaurant App') || component.project.title.contains('weather App')? 200.px:280.px,
+        height:component.project.title.contains('Restaurant App') || component.project.title.contains('weather App')? 400.px:400.px,
         radius: BorderRadius.circular(20.px),
         opacity: isVisible ? 1 : 0,
         overflow: Overflow.hidden,
@@ -86,9 +84,9 @@ class _AnimatedProjectCardState extends State<AnimatedProjectCard> {
           src: component.project.image,
           alt: component.project.title,
           styles: Styles(
-            width: 280.px,
-            height: 160.px,
-            raw: {' transition': 'transform 0.4s ease', 'objectFit': 'cover'},
+            width:component.project.title.contains('Restaurant App') || component.project.title.contains('weather App')? 100.px:280.px ,
+            height:component.project.title.contains('Restaurant App') || component.project.title.contains('weather App')? 200.px:160.px,
+            raw: {' transition': 'transform 0.4s ease'},
 
             //
           ),

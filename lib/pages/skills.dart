@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:nativewrappers/_internal/vm/lib/developer.dart';
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_riverpod/jaspr_riverpod.dart';
@@ -20,7 +19,7 @@ class Myskills extends StatefulComponent {
   static List<StyleRule> get styles => [
     css('.skills-section').styles(
       display: Display.flex,
-     minHeight: 100.vh,
+    //  minHeight: 100.vh,
       padding: Spacing.symmetric(horizontal: 400.px),
       flexDirection: FlexDirection.column,
       justifyContent: JustifyContent.center,
@@ -136,7 +135,7 @@ void _startObserving() {
   if (element != null) {
     observer.observe(element);
   } else {
-    log('⚠️ Element with id ${component.id} not found');
+    print('⚠️ Element with id ${component.id} not found');
   }
 }
 
