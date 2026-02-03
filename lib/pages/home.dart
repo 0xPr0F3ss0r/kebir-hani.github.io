@@ -36,7 +36,8 @@ class Home extends StatelessComponent {
         backgroundColor: currentMode == 'dark' ? Colors.black : Colors.white,
       ),
       [
-        StartSection(),
+     
+                StartSection(),
         About(id: aboutId),
         Myskills(id: skillsId),
         ProjectsSection(id: projectsId),

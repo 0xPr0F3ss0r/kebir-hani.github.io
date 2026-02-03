@@ -2,26 +2,35 @@ import 'dart:async';
 
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
-import 'package:jaspr_riverpod/jaspr_riverpod.dart';
+import 'package:my_portfolio/components/video-background.dart';
 import 'package:my_portfolio/constants/theme.dart';
-import 'package:my_portfolio/state_management/light-dark-mode.dart' as state_management;
 
 class StartSection extends StatefulComponent {
   @override
   State<StartSection> createState() => _StartSectionState();
-  
+
   static get styles => [
     css('#start').styles(
       display: Display.flex,
+      position: Position.relative(),
       height: 100.vh,
-      margin: Spacing.only(left: 250.px),
+      margin: Spacing.zero,
+      overflow: Overflow.hidden,
       flexDirection: FlexDirection.column,
       justifyContent: JustifyContent.center,
       alignItems: AlignItems.start,
       color: whiteColor,
       textAlign: TextAlign.start,
     ),
-
+    css('#start .container').styles(
+      position: Position.relative(),
+      width: 100.percent,
+      padding: Spacing.only(left: 2.5.rem, right: 2.5.rem, top: 6.rem, bottom: 6.rem),
+      margin: Spacing.zero,
+      raw: {
+        'z-index': '2',
+      },
+    ),
 
     // Paragraph animation
     css('#start p').styles(
@@ -43,6 +52,7 @@ class StartSection extends StatefulComponent {
         'background-size': '100% 100%',
       },
     ),
+    ...VideoBackground.styles,
   ];
 }
 
@@ -60,11 +70,10 @@ class _StartSectionState extends State<StartSection> {
   void initState() {
     super.initState();
     if (kIsWeb) {
-      
       Future.delayed(const Duration(milliseconds: 100), () {
         setState(() => filled = true);
       });
-      
+
       // Start Russian text animation
       Future.delayed(const Duration(milliseconds: 1600), () {
         if (mounted) {
@@ -98,29 +107,32 @@ class _StartSectionState extends State<StartSection> {
 
   @override
   Component build(BuildContext context) {
-    String mode  = context.watch(state_management.mode);
-    Color textColor = mode == "dark" ? whiteColor : dark;
-    return section(id: 'start', [
-      div(classes: 'container', [
-        div(classes: 'cta', [
-          h1(
-            classes: showRussian ? 'russian show' : 'english',
-            styles: Styles(
-              color: textColor,
-              fontFamily: FontFamily('Fira Code, monospace'),
+    return section(
+      id: 'start',
+      styles: Styles(position: Position.relative()),
+      [
+        const VideoBackground(),
+        div(classes: 'container', [
+          div(classes: 'cta', [
+            h1(
+              classes: showRussian ? 'russian show' : 'english',
+              styles: Styles(
+                color: Colors.white,
+                fontFamily: FontFamily('Fira Code, monospace'),
+              ),
+              [.text(showRussian ? 'Кебир Хани' : 'KEBIR HANI!')],
             ),
-            [.text(showRussian ? 'Кебир Хани' : 'KEBIR HANI!')],
-          ),
-          p(
-            classes: filled ? 'fill' : '',
-            styles: Styles(
-              color: textColor,
-              fontFamily: FontFamily('DynaPuff'),
+            p(
+              classes: filled ? 'fill' : '',
+              styles: Styles(
+                color: Colors.white,
+                fontFamily: FontFamily('DynaPuff'),
+              ),
+              [.text(texts[index])],
             ),
-            [.text(texts[index])],
-          ),
+          ]),
         ]),
-      ]),
-    ]);
+      ],
+    );
   }
 }
