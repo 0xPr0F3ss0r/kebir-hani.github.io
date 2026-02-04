@@ -21,17 +21,32 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
+      # 1. Checkout repo
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
+      # 2. Install Dart
+      - uses: dart-lang/setup-dart@v1
 
+      # 3. Activate Jaspr CLI
+      - name: Install Jaspr CLI
+        run: dart pub global activate jaspr_cli
+
+      # 4. Install dependencies
+      - name: Get dependencies
+        run: dart pub get
+
+      # 5. Build Jaspr site
+      - name: Build Jaspr site
+        run: jaspr build
+
+      # 6. Upload build folder
       - name: Upload Jaspr build
         uses: actions/upload-pages-artifact@v3
         with:
           path: 'build/jaspr'
 
+      # 7. Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
