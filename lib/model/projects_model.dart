@@ -6,6 +6,15 @@ class Project {
   final String category;
   final String image;
   final List<String> techStack;
+  final String link;
 
-  Project(this.id, this.title, this.description, this.category, this.image, this.techStack);
+  Project(
+    this.id,
+    this.title,
+    this.description,
+    this.category,
+    this.image,
+    this.techStack,
+    this.link,
+  );
 }
