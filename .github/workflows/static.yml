@@ -27,25 +27,28 @@ jobs:
       # 2. Install Flutter
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: stable
+          flutter-version: '3.13.0'  # <-- specify exact version
 
-      # 3. Install dependencies
+      # 3. Enable Flutter on PATH
+      - run: flutter doctor
+
+      # 4. Get dependencies
       - name: Get dependencies
         run: flutter pub get
 
-      # 4. Activate Jaspr CLI
+      # 5. Activate Jaspr CLI
       - name: Activate Jaspr CLI
         run: flutter pub global activate jaspr_cli
 
-      # 5. Build Jaspr site
+      # 6. Build Jaspr site
       - name: Build Jaspr site
         run: flutter pub global run jaspr_cli:jaspr build
 
-      # 6. Upload build folder
+      # 7. Upload build folder
       - uses: actions/upload-pages-artifact@v3
         with:
           path: build/jaspr
 
-      # 7. Deploy to GitHub Pages
+      # 8. Deploy to GitHub Pages
       - id: deployment
         uses: actions/deploy-pages@v4
