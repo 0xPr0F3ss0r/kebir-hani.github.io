@@ -22,31 +22,30 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # 1. Checkout repo
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      # 2. Install Dart
-      - uses: dart-lang/setup-dart@v1
+      # 2. Install Flutter
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: stable
 
-      # 3. Activate Jaspr CLI
-      - name: Install Jaspr CLI
-        run: dart pub global activate jaspr_cli
-
-      # 4. Install dependencies
+      # 3. Install dependencies
       - name: Get dependencies
-        run: dart pub get
+        run: flutter pub get
+
+      # 4. Activate Jaspr CLI
+      - name: Activate Jaspr CLI
+        run: flutter pub global activate jaspr_cli
 
       # 5. Build Jaspr site
       - name: Build Jaspr site
-        run: jaspr build
+        run: flutter pub global run jaspr_cli:jaspr build
 
       # 6. Upload build folder
-      - name: Upload Jaspr build
-        uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v3
         with:
-          path: 'build/jaspr'
+          path: build/jaspr
 
       # 7. Deploy to GitHub Pages
-      - name: Deploy to GitHub Pages
-        id: deployment
+      - id: deployment
         uses: actions/deploy-pages@v4
